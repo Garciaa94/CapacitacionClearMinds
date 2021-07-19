@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package com.cmc.direccion.entidades;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  13 jul. 2021
+ */
+public class Telefono {
+	private String Operadora;
+	private String numero; 
+	private int codigo;
+	private boolean tieneWhatsapp ;
+	/**
+	 * @param operadora
+	 * @param numero
+	 * @param codigo
+	 */
+	public Telefono(String operadora, String numero, int codigo) {
+		super();
+		Operadora = operadora;
+		this.numero = numero;
+		this.codigo = codigo;
+	}
+
+}

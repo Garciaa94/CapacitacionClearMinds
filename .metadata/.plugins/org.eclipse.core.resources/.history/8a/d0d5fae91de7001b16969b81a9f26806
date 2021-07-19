@@ -1,0 +1,120 @@
+/**
+ * 
+ */
+package com.cmc.exepciones;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.commons.util.DateUtil;
+import com.cmc.commons.util.TipoPrestamo;
+import com.cmc.evaluacion.fase2.entidades.Cartera;
+import com.cmc.evaluacion.fase2.entidades.Prestamo;
+import com.cmc.excepciones.EvaluacionException;
+
+public class AdminPrestamos {
+
+	public static final Logger LOGGER = LogManager.getLogger(AdminPrestamos.class);
+
+	/*
+	 * Crear un método colocarPrestamos que recibe un String con la ruta del
+	 * archivo y una instancia de Cartera. Su objetivo es asignar los préstamos
+	 * a los clientes correspondientes, leyendo de un archivo de texto.
+	 */
+
+	public static void colocarPrestamos(String rutaArchivo, Cartera cartera) {
+		FileReader fileReader = null;
+		BufferedReader br = null;
+		String linea = null;
+
+		File archivo = new File(rutaArchivo);
+		try {
+			fileReader = new FileReader(archivo);
+			br = new BufferedReader(fileReader);
+
+			while ((linea = br.readLine()) != null) {
+				armarPrestamo(linea, cartera);
+				LOGGER.trace("Linea: " + linea);
+			}
+			LOGGER.trace("Fin del proceso lectura");
+
+		} catch (FileNotFoundException e) {
+
+			LOGGER.error("No se encuentra archivo", e);
+
+			throw new EvaluacionException("No se encuentra archivo: " + rutaArchivo);
+		} catch (IOException e) {
+
+			LOGGER.error("No es posible leer el archivo");
+
+			throw new EvaluacionException("Imposible leer el archivo: " + rutaArchivo);
+		} finally {
+			try {
+				if (fileReader != null) {
+					fileReader.close();
+				}
+				if (br != null) {
+					br.close();
+				}
+			} catch (IOException e) {
+
+				LOGGER.error("Error al cerrar la lectura", e);
+			}
+		}
+	}
+
+	/*
+	 * En lugar de armarCliente, crear un método armarPrestamo, con la siguiente
+	 * lógica:
+	 * 
+	 * La primera subcadena de cada línea, por ejemplo H695434 corresponde al
+	 * número de préstamo, dentro de esta, la primera letra corresponde al tipo
+	 * de préstamo, los tipos disponibles son los que se definieron en las
+	 * constantes de la clase TipoPrestamo. Compare la primera letra de la
+	 * subcadena contra las constantes, de manera que: Si es H, el tipo de
+	 * préstamo es H Si es Q, el tipo de préstamo es Q Si no es ni H ni Q, el
+	 * tipo de préstamo es O
+	 *
+	 * Para comparar y asignar utilice las constantes!!
+	 *
+	 */
+
+	private static void armarPrestamo(String lineaLeida, Cartera cartera) {
+		String[] pedazos = new String[4];
+		Prestamo prestamo = null;
+		String tipo = null;
+
+		try {
+			pedazos = lineaLeida.split("-");
+			tipo = pedazos[1].substring(0, 1);
+			if (tipo.equals(TipoPrestamo.HIPOTECARIO)) {
+				prestamo = new Prestamo(pedazos[1].substring(1, pedazos[1].length()), pedazos[0]);
+				prestamo.setTipo(TipoPrestamo.HIPOTECARIO);
+				prestamo.setFecha(DateUtil.convertir(pedazos[2]));
+				prestamo.setMonto(Double.parseDouble(pedazos[3]));
+			} else if (tipo.equals(TipoPrestamo.QUIROGRAFARIO)) {
+				prestamo = new Prestamo(pedazos[1].substring(1, pedazos[1].length()), pedazos[0]);
+				prestamo.setTipo(TipoPrestamo.QUIROGRAFARIO);
+				prestamo.setFecha(DateUtil.convertir(pedazos[2]));
+				prestamo.setMonto(Double.parseDouble(pedazos[3]));
+			} else {
+				prestamo = new Prestamo(pedazos[1].substring(1, pedazos[1].length()), pedazos[0]);
+				prestamo.setTipo(TipoPrestamo.OTRO);
+				prestamo.setFecha(DateUtil.convertir(pedazos[2]));
+				prestamo.setMonto(Double.parseDouble(pedazos[3]));
+			}
+
+			cartera.colocarPrestamo(prestamo);
+
+		} catch (Exception e) {
+			LOGGER.error("Error al armar prestamo en la línea", e);
+		}
+	}
+
+}

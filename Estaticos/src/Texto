@@ -1,0 +1,5 @@
+Los metodos Estaticos pertenecen a una clase mas no a objeto
+al cual se le va hacer la instancia.
+
+para que un dato sea constante y no modificable se le da el 
+valor de "final" al atributo

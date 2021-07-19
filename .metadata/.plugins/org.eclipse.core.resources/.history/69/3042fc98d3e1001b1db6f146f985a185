@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.cmc.colecciones;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  10 jul. 2021
+ */
+public class Ejemplo3 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

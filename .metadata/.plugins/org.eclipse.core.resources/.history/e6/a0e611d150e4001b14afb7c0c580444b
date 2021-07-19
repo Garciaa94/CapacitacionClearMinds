@@ -1,0 +1,41 @@
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  13 jul. 2021
+ */
+public class main {
+    
+    public static void main(String[] args) {
+        
+        AutoBus b = new AutoBus();
+        Usuario u = new Usuario("davier","a","21");
+        Usuario u2 = new Usuario("jose","b","23");
+        Usuario u3 = new Usuario("dario","c","23");
+        Usuario u4 = new Usuario("jorge","d","23");
+        Usuario u5 = new Usuario("luisa","e","23");
+        Usuario u6 = new Usuario("luis","f","23");
+        b.subirUsuario(u);
+        b.subirUsuario(u2);
+        b.subirUsuario(u3);
+        b.subirUsuario(u4);
+        b.subirUsuario(u5);
+        
+         
+        b.mostrarPasajeros();
+        //System.out.println("despues de bajar al usuario");
+        //b.bajerUsuario("b");
+       // b.mostrarPasajeros();
+        //b.subirUsuario(u2);
+        //System.out.println("montar otra ves al pasajero");
+        
+        b.bajarUsuario("a");
+        b.subirUsuario(u6);
+
+        System.out.println("bajo un pasajero");
+        b.mostrarPasajeros();
+       
+        
+    }
+    
+}

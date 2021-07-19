@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.cms.estaticos;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  13 jul. 2021
+ */
+public class AtributosContador {
+private int contadorNormal;
+private static int ContadorEstatico; // pertenece a la clase no al objeto
+public void incrementar() {
+	contadorNormal= contadorNormal+1;
+}
+}

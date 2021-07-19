@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package com.cmc.capacitacion.archivos;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.capacitacion.excepciones.ToxicaExcepcion;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 16 jul. 2021
+ */
+// Proivido Systeam.out.println en este nivel
+public class ManejadorArchivos {
+	private String rutaArchivo;
+	private Logger logger = LogManager.getLogger(ManejadorArchivos.class);
+
+	public ManejadorArchivos(String rutaArchivo) {
+		this.rutaArchivo = rutaArchivo;
+
+	}
+
+	public void leer() throws ToxicaExcepcion {
+		File f = new File(rutaArchivo);
+		try {
+			FileReader fileReader = new FileReader(f);
+			int leido =fileReader.read();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			logger.error("Error al leer el archivo ",e);
+			throw new ToxicaExcepcion("No se pudo leer el Archico"+rutaArchivo);
+		}
+	}
+
+}

@@ -1,0 +1,2 @@
+Para usar una clase que se encuentra en un paquete diferente se debe importar la clase 
+usando la palabra clave "Import"

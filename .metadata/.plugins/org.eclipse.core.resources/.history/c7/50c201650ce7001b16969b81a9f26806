@@ -1,0 +1,89 @@
+/**
+ * 
+ */
+package com.cmc.exepciones;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.evaluacion.fase2.entidades.Cliente;
+
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class EvalucionException {
+	private String rutaArchivo;
+	private Logger logger = LogManager.getLogger(EvalucionException.class);
+	BufferedReader br = null;
+	FileReader fileReader = null;
+	String[] partes ;
+	Cliente clc;
+	public class ToxicaExcepcion extends Exception {
+		public ToxicaExcepcion(String msg) {
+			super(msg);
+		}
+
+	public ArrayList<Cliente> leer() throws ToxicaExcepcion {
+		File f = new File(rutaArchivo);
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+		try {
+
+			fileReader = new FileReader(f);
+			br = new BufferedReader(fileReader);
+			String linea = "";// br.readLine(); //lee linea completa
+			linea.split(linea);
+			while ((linea = br.readLine()) != null) {
+				partes = linea.split(","); 
+				 c= new Cliente(partes[0], partes[1], partes[2]);
+				Cliente.add(c);
+				// System.out.println(linea);
+			}
+			/*
+			 * int leido = fileReader.read(); System.out.println("leido: " + leido); //lee
+			 * cararter por caracter leido = fileReader.read(); System.out.println("leido: "
+			 * + leido);//lee cararter por caracter leido = fileReader.read();
+			 * System.out.println("leido: " + leido);
+			 */ // lee cararter por caracter
+		} catch (FileNotFoundException e) {
+			// e.printStackTrace();
+			logger.error("Error al leer el archivo ", e);
+			throw new ToxicaExcepcion("No existe el archivo: " + rutaArchivo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			// e.printStackTrace();
+			logger.error("Error al leer el archivo ", e);
+			throw new ToxicaExcepcion("No se pudo leer el Archico: " + rutaArchivo);
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				// e.printStackTrace();
+				logger.error("Error al cerrar el buffer", e);
+			}
+			try {
+				if (fileReader != null) {
+					fileReader.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				// e.printStackTrace();
+				logger.error("Error al cerrar el archivo", e);
+			}
+		}
+		return personas;
+	}
+
+}

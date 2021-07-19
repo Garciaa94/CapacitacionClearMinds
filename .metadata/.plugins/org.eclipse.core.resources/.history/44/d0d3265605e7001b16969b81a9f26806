@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.test;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class TestCartera {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

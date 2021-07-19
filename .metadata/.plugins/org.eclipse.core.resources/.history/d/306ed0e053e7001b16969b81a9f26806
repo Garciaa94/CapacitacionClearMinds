@@ -1,0 +1,120 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.entidades;
+
+import java.util.ArrayList;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 17 jul. 2021
+ */
+public class Cartera {
+	ArrayList<Cliente> clientes;
+	ArrayList<Prestamo> prestamos;
+
+	/**
+	 * @return the prestamo
+	 */
+	public ArrayList<Prestamo> getPrestamo() {
+		return prestamos;
+	}
+
+
+	/**
+	 * @param prestamo the prestamo to set
+	 */
+	public void setPrestamo(ArrayList<Prestamo> prestamo) {
+		this.prestamos = prestamo;
+	}
+
+
+	/**
+	 * @return the cliente
+	 */
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+	
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(ArrayList<Cliente> cliente) {
+		this.clientes = cliente;
+
+	}
+
+	public Cliente buscarCliente(String cedula) {
+		for (Cliente cliente : clientes) {
+			if (cliente.getCedula().equals(cedula)) {
+				return cliente;
+			}
+		}
+		return null;
+
+	}
+
+	public Prestamo buscar(String cedula) {
+		for (Prestamo pre : prestamos) {
+			if (pre.getCedulaCliente().equals(cedula)) {
+				return pre;
+			}
+		}
+		return null;
+
+	}
+
+/*	public void colocarPrestamo(String prestamo) {
+
+		for (Cliente cliente : clientes) {
+			if (cliente.getCedula().equals(prestamo)) {
+				((Cliente) cliente).colocarPrestamo(prestamo);
+			}
+		}
+	}*/
+
+	public boolean agregarCliente(Cliente cliente) {
+		boolean en = true;
+		for (Cliente t : clientes) {
+			if (t.getCedula().equals(cliente.getCedula())) {
+				en = false;
+			}
+		}
+		if (en) {
+			clientes.add(cliente);
+		}
+		return en;
+	}
+	
+	public boolean ColocarPrestamo1(Prestamo prestamo) {
+		boolean en = true;
+		for (Prestamo t : prestamos) {
+			if (t.getCedulaCliente().equals(prestamo.getCedulaCliente())) {
+				en = false;
+			}
+		}
+		if (en) {
+			prestamos.add(prestamo);
+		}
+		return en;
+	}
+
+	/**
+	 * @param clientes
+	 */
+	public Cartera() {
+		// super();
+		clientes = new ArrayList<Cliente>();
+	}
+
+	/**
+	 * @param prestamo2
+	 */
+	public void colocarPrestamo(Prestamo prestamo2) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

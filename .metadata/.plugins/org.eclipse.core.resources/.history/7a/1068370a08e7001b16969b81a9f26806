@@ -1,0 +1,69 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.entidades;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class Cliente {
+	private String Cedula;
+	private String Nombre;
+	private String Apellido;
+	/**
+	 * @param cedula
+	 * @param nombre
+	 * @param apellido
+	 */
+	
+	public Cliente(String cedula, String nombre, String apellido) {
+		//super();
+		Cedula = cedula;
+		Nombre = nombre;
+		Apellido = apellido;
+	}
+	/**
+	 * @return the cedula
+	 */
+	public String getCedula() {
+		return Cedula;
+	}
+	/**
+	 * @param cedula the cedula to set
+	 */
+	public void setCedula(String cedula) {
+		Cedula = cedula;
+	}
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return Nombre;
+	}
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	/**
+	 * @return the apellido
+	 */
+	public String getApellido() {
+		return Apellido;
+	}
+	/**
+	 * @param apellido the apellido to set
+	 */
+	public void setApellido(String apellido) {
+		Apellido = apellido;
+	}
+	@Override
+	public String toString() {
+		return "Cliente [Cedula=" + Cedula + ", Nombre=" + Nombre + ", Apellido=" + Apellido + "]";
+	}
+	
+
+}

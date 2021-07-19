@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.commons.util;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class TipoPrestamo {
+	private static String HIPOTECARIO ="H";
+	private static String QUIROGRAFARIO ="Q";
+	private static String OTROS ="O";
+	/**
+	 * @return the hIPOTECARIO
+	 */
+	public static String getHIPOTECARIO() {
+		return HIPOTECARIO;
+	}
+	/**
+	 * @param hIPOTECARIO the hIPOTECARIO to set
+	 */
+	public static void setHIPOTECARIO(String hIPOTECARIO) {
+		HIPOTECARIO = hIPOTECARIO;
+	}
+	
+
+}

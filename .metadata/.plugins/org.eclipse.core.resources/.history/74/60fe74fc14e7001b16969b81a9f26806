@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.commons.util;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class TipoPrestamo {
+	private static final String HIPOTECARIO ="H";
+	private static final String QUIROGRAFARIO ="Q";
+	private static final String OTROS ="O";
+	
+
+}

@@ -1,0 +1,86 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.entidades;
+
+import java.util.Date;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  17 jul. 2021
+ */
+public class Prestamo {
+	private String Numero;
+	private Date Fecha;
+	private double Monto;
+	private String Tipo;
+	private String CedulaCliente;
+	
+	/**
+	 * @return the numero
+	 */
+	public String getNumero() {
+		return Numero;
+	}
+	/**
+	 * @param numero the numero to set
+	 */
+	public void setNumero(String numero) {
+		Numero = numero;
+	}
+	/**
+	 * @return the fecha
+	 */
+	public Date getFecha() {
+		return Fecha;
+	}
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(Date fecha) {
+		Fecha = fecha;
+	}
+	/**
+	 * @return the monto
+	 */
+	public double getMonto() {
+		return Monto;
+	}
+	/**
+	 * @param monto the monto to set
+	 */
+	public void setMonto(double monto) {
+		Monto = monto;
+	}
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return Tipo;
+	}
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		Tipo = tipo;
+	}
+	/**
+	 * @param numero
+	 * @param monto
+	 * @param tipo
+	 */
+	public Prestamo(String numero, String cedula) {
+		//super();
+		Numero = numero;
+		CedulaCliente=cedula;
+	}
+	public String getCedulaCliente() {
+		return CedulaCliente;
+	}
+
+	public void setCedulaCliente(String cedulaCliente) {
+		this.CedulaCliente = cedulaCliente;
+	}
+	
+}

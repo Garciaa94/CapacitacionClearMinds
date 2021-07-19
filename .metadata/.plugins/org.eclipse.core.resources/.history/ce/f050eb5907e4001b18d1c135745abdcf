@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.cmc.direccion.entidades;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 13 jul. 2021
+ */
+public class AdminTelefono {
+	public Telefono ObtenerValorProductoMasCaro(Telefono a) {
+		if (a.getOperadora() != null) {
+
+			System.out.println("Tiene operadora");
+		}
+		else {
+			System.out.println("No Tiene operadora");
+		}
+	}
+}

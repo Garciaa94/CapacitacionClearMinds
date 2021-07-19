@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.entidades;
+
+import java.util.ArrayList;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 17 jul. 2021
+ */
+public class Pago {
+	ArrayList<Cliente> cliente = ArrayList<Cliente>;
+
+	/**
+	 * @return the cliente
+	 */
+	public ArrayList<Cliente> getCliente() {
+		return cliente;
+	}
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(ArrayList<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+	
+	
+}

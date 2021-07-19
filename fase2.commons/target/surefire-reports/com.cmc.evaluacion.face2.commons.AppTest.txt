@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.cmc.evaluacion.face2.commons.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.22 s - in com.cmc.evaluacion.face2.commons.AppTest

@@ -1,0 +1,90 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.face2.servicios;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.cmc.evaluacion.fase2.entidades.Cartera;
+import com.cmc.evaluacion.fase2.entidades.Cliente;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 17 jul. 2021
+ */
+public class AdminClientes {
+//	private String rutaArchivo;
+	private static final Logger LOGGER = LogManager.getLogger(AdminClientes.class);
+
+	public AdminClientes() {
+	}
+
+	public static Cartera armarCartera(String ruta) throws EvaluacionException {
+		File archivo = new File(ruta);
+		FileReader fileReader = null;
+		BufferedReader br = null;
+		String linea = null;
+		Cartera ca = new Cartera();
+
+		try {
+			fileReader = new FileReader(archivo);
+			br = new BufferedReader(fileReader);
+			while ((linea = br.readLine()) != null) {
+				LOGGER.trace("Linea: " + linea);
+				try {
+					armarcliente(linea, ca);
+				} catch (Exception e) {
+					// TODO: handle exception
+					LOGGER.error("error al armar cliente en la línea: " + linea, e);
+				}
+
+			}
+			return ca;
+
+		} catch (FileNotFoundException e) {
+			LOGGER.error("No se encuentra el archivo", e);
+			throw new EvaluacionException("No se encuentra el archivo: " + ruta);
+
+		} catch (IOException e) {
+			LOGGER.error("Error al leer el archivo", e);
+			throw new EvaluacionException("Error al leer el archivo: " + ruta);
+		} finally {
+			try {
+				if (fileReader != null) {
+					fileReader.close();
+				}
+				if (br != null) {
+					br.close();
+				}
+
+			} catch (IOException e) {
+				LOGGER.error("Error al cerrar el archivo", e);
+			}
+
+		}
+
+	}
+
+	private static void armarcliente(String linea, Cartera cartera) {
+		String[] pedazos = new String[3];
+		try {
+			if (linea.contains(" ")) {
+				throw new EvaluacionException("Caracter inválido");
+			} else {
+				pedazos = linea.split(",");
+				cartera.agregarCliente(new Cliente(pedazos[0], pedazos[1], pedazos[2]));
+			}
+		} catch (Exception e) {
+			LOGGER.error("Error al cerrar el archivo", e);
+		}
+	}
+}

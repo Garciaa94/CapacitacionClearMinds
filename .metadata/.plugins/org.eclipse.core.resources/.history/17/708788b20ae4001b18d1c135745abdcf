@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.cmc.test;
+
+import com.cms.estaticos.Util;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 13 jul. 2021
+ */
+public class UtilTest {
+	public static void main(String[] args) {
+		Util util = new Util();
+		util.ValidarRango(5);
+
+	}
+}

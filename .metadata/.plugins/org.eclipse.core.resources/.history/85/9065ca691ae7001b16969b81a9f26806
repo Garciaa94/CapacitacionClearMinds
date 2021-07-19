@@ -1,0 +1,64 @@
+/**
+ * 
+ */
+package com.cmc.evaluacion.fase2.entidades;
+
+import java.util.ArrayList;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date 17 jul. 2021
+ */
+public class Cartera {
+	ArrayList<Cliente> clientes ;
+
+	/**
+	 * @return the cliente
+	 */
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(ArrayList<Cliente> cliente) {
+		this.clientes = cliente;
+
+	}
+
+	public Cliente buscar(String cedula) {
+		for (Cliente cliente : clientes) {
+			if (cliente.getCedula().equals(cedula)) {
+				return cliente;
+			}
+		}
+		return null;
+
+	}
+
+	public boolean agregarCliente(Cliente cliente) {
+		boolean en = true;
+		for (Cliente t : clientes) {
+			if (t.getCedula().equals(cliente.getCedula())) {
+				en = false;
+			}
+		}
+		if (en) {
+			clientes.add(cliente);
+		}
+		return en;
+	}
+	
+
+
+	/**
+	 * @param clientes
+	 */
+	public Cartera() {
+		//super();
+		clientes = new ArrayList<Cliente>();
+	}
+
+}

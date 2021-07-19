@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.cmc.capacitacion.archivos;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  16 jul. 2021
+ */
+public class ManejadorArchivos {
+	private String rutaArchivo;
+	public ManejadorArchivos(String rutaArchivo) {
+		this.rutaArchivo=rutaArchivo;
+
+	}
+	public void leer() {
+	File f =new File(rutaArchivo);
+	try {
+		FileReader fileReader= new FileReader(f);
+
+	} catch (FileNotFoundException e) {
+		
+		e.printStackTrace();
+	}
+	}
+
+}

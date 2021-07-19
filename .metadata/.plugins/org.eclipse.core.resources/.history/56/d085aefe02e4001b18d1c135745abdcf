@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.cmc.direccion.test;
+
+/**
+ * @author Adrian Garcia
+ * @mail peter.garcia@pucese.edu.ec
+ * @date  13 jul. 2021
+ */
+public class TelefonoTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
